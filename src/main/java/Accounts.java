@@ -1,9 +1,11 @@
+import java.util.Objects;
+
 public class Accounts extends User{
         private int accountId;
         private int balance;
-        private char currency;
+        private String currency;
 
-    public Accounts(int accountId,int userId, int balance, char currency) {
+    public Accounts(int accountId,int userId, int balance, String currency) {
         super(userId);
         this.accountId = accountId;
         this.balance = balance;
@@ -26,11 +28,26 @@ public class Accounts extends User{
         this.balance = balance;
     }
 
-    public char getCurrency() {
+    public String getCurrency() {
         return currency;
     }
 
-    public void setCurrency(char currency) {
+    public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(accountId, getUserId(), balance, currency );
+    }
+
+    @Override
+    public String toString() {
+        return "Accounts{" +
+                "accountId=" + accountId +
+                ", userId='" + getUserId() + '\'' +
+                ", balance='" + balance + '\'' +
+                ", currency='" + currency + '\'' +
+                '}';
     }
 }
